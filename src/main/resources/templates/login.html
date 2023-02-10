@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="data:;base64,=" rel="icon">
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="box-form">
+    <div class="left">
+        <div class="overlay">
+            <div>
+                <h1 style="font-size: 3vh">Control of company business trip budget</h1>
+            </div>
+            <div style="font-size: 2vh">
+                "Learning is a treasure that will follow its owner everywhere"
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <h5 style="font-size: 3vh">Sign in</h5>
+        <form action="/login" method="post">
+            <div class="inputs">
+                <input id="username" name="username" placeholder="Enter your username" type="text">
+                <br>
+                <input id="password" name="password" placeholder="Enter password" type="password">
+            </div>
+            <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/>
+            <br><br><br>
+            <button id="check" style="font-size: 2vh" type="submit">Login</button>
+        </form>
+    </div>
+</div>
+<script>
+    document.getElementById('check').onclick = function () {
+        let login = document.getElementById('username').value;
+        localStorage.setItem('login', login)
+    }
+</script>
+</body>
+</html>

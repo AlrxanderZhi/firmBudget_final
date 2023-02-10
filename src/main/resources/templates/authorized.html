@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>new data</title>
+    <link href="data:;base64,=" rel="icon">
+    <link href="../css/authorized.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="main-block">
+    <div class="form" id="f1">
+        <h4>New data for department</h4>
+        <div class="info">
+            <label>department
+                <select id="select1">
+                </select>
+            </label>
+            <label>id
+                <input id="departId" name="departId" type="text" readonly>
+            </label>
+            <label>balance
+                <input class="number" id="deptBalance" min="0" name="balance" type="number">
+            </label>
+            <label>day limit
+                <input class="number" id="deptDayLimit" min="0" name="dayLimit" type="number">
+            </label>
+            <label>limit for one pay
+                <input class="number" id="deptOnePayLimit" min="0" name="onePayLimit" type="number">
+            </label>
+            <label>date limit
+                <input class="number" id="deptDateLimit" min="0" name="dateLimit" type="number">
+            </label>
+            <label>for date
+                <input id="deptDate" name="date"  type="date">
+            </label>
+        </div>
+        <button id="btn1" type="submit">Set</button>
+    </div>
+
+    <div class="form" id="f2">
+        <h4 id="h4">New data for employee</h4>
+        <div class="info">
+            <label>id
+                <select id="select2">
+                </select>
+            </label>
+            <label>department
+                <input id="emplDeptName" name="emplDeptName" type="text" readonly>
+            </label>
+            <label>first name
+                <input class="text" id="firstName" name="firstName" type="text">
+            </label>
+            <label>last name
+                <input class="text" id="lastName" name="lastName" type="text">
+            </label>
+            <label>one pay limit
+                <input class="number" id="emplOnePayLimit" min="0" name="onePayLimit" type="number">
+            </label>
+            <label>day limit
+                <input class="number" id="emplDayLimit" min="0" name="dayLimit" type="number">
+            </label>
+        </div>
+        <button id="btn2" type="submit">Set</button>
+    </div>
+
+    <div class="form" id="f3">
+        <h4>Delete department</h4>
+        <div class="info">
+            <label>
+                <input id="deptId" min="0" name="deptId" placeholder="id" type="number">
+            </label>
+        </div>
+        <button id="btn3" type="submit">Delete</button>
+    </div>
+
+    <div class="form" id="f4">
+        <h4>Delete employee</h4>
+        <div class="info">
+            <label>
+                <input id="employeeId" min="0" name="employeeId" placeholder="id" type="number">
+            </label>
+        </div>
+        <button id="btn4" type="submit">Delete</button>
+    </div>
+
+</div>
+<script src="../js/authorized.js" type="module"></script>
+</body>
+</html>

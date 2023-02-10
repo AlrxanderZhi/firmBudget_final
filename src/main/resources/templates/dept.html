@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>company</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="data:;base64,=" rel="icon">
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/dept.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="col-2">
+    <header id="header">
+        <div>
+            <h3 style="font-size: 2vh; margin-top: -15vh; color: white"></h3>
+            <h3 style="font-size: 2vh; margin-top: -13vh; margin-left: 90vw">
+                <a href="/login" style="color: white">Logout</a>
+            </h3>
+        </div>
+        <h6>Our departments</h6>
+    </header>
+
+    <header id="people" style="margin-top: 50vh">
+        <a href="/employees" style="font-size: large">Our people</a>
+    </header>
+
+    <header id="authorized" style="margin-top: 60vh; ">
+        <a href="/authorized" style="font-size: large">Access to data</a>
+    </header>
+
+    <header id="employeePays" style="margin-top: 60vh; ">
+        <a href="/employeePays" style="font-size: large">Payment</a>
+    </header>
+
+    <main class="content">
+        <article>
+            <div class="flex-container">
+            </div>
+        </article>
+    </main>
+</div>
+<script>
+    //--------------------------------------------------------fulfil scripts one by one
+    function addScript(src) {
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = false; // чтобы гарантировать порядок
+        document.head.appendChild(script);
+    }
+
+    addScript("../js/dept.js");
+    setTimeout(addScript, 100, "../js/getLoginAndRole.js", 1);
+</script>
+</body>
+</html>

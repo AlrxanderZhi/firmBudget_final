@@ -1,0 +1,50 @@
+1 Для переноса строк пришлось вставить
+body {
+    white-space: pre-line; //!!!!!!!!!!!!!
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    margin: 0;
+}
+
+2 Цикл for  не создает множественные элементы.
+Пришлось использовать цикл while
+
+3 Вставка элемента массива в url
+https://ru.stackoverflow.com/questions/1256010/%D0%9A%D0%B0%D0%BA-%D0%B2-js-%D0%B2%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C-%D0%B0%D0%B4%D1%80%D0%B5%D1%81-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8-%D0%B8%D0%B7-%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D0%B0-arr-%D0%B2-div-style-backgroundimage-u
+
+4 Адаптивность
+* {
+    box-sizing: border-box;
+    width: 100%;
+    height: content-box;
+}
+
+5 проверка на несоответсвующий полю ввод данных
+function checkProperties(obj) {
+      for (let key in obj) {
+          if (obj[key] === "")
+              return true;
+      }
+      return false;
+  }
+
+6 Reload page location.reload();
+7 Receive text from option
+https://stackoverflow.com/questions/14976495/get-selected-option-text-with-javascript
+8 Запрет на ввод всего, кроме цифр
+https://proweb63.ru/help/js/js-only-num
+9 Сравнение дат js
+https://overcoder.net/q/27461/%D1%81%D1%80%D0%B0%D0%B2%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D1%82%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D1%87%D0%B0%D1%81%D1%82%D0%B8-%D0%B4%D0%B0%D1%82%D1%8B-%D0%B1%D0%B5%D0%B7-%D1%81%D1%80%D0%B0%D0%B2%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%B8-%D0%B2-javascript
+10 Решение проблемы scrf
+https://www.baeldung.com/spring-security-csrf
+11 Шифрование
+https://jsfiddle.net/xbk736br/
+12 Could not delete department. Had to input ROLE_ in the schema
+13 h2 show
+https://stackoverflow.com/questions/72255338/intellij-embedded-h2-database-tables-do-not-appear
+14 https://springframework.guru/using-the-h2-database-console-in-spring-boot-with-spring-security/ - using h2!!!!!!!!!!!!!
+15 Set delay between two scripts to be able to load role from localStorage
+16 Экспорт функции
+https://www.google.com/search?q=%D1%8D%D0%BA%D1%81%D0%BF%D0%BE%D1%80%D1%82+%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8+js&client=firefox-b-d&hl=ru&source=lnms&tbm=vid&sa=X&ved=2ahUKEwiCsMP3sIb9AhVGposKHWidBxQQ_AUoAXoECAEQAw&biw=1366&bih=625&dpr=1#fpstate=ive&vld=cid:8d81e91a,vid:SjxiP5r6mNg
+17 authorized.js стр 281 долго не работало срвнение, пока не убрал тройное

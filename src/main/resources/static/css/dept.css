@@ -1,0 +1,76 @@
+body {
+    white-space: pre-line;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    font-weight: bold;
+    font-family: Roboto, Arial, sans-serif;
+    background-image: url("../pic/1647995436_4-gamerwall-pro-p-fon-puteshestviya-krasivie-6.jpg");
+}
+
+.col-2 {
+    display: inline-block;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.content > article {
+    height: 2vh;
+}
+
+header {
+    height: 1.5vh;
+    text-align: left;
+    font-weight: bolder;
+    font-size: 4vh;
+    position: fixed;
+}
+
+header, article {
+    padding-left: 1vh;
+}
+
+.deptName {
+    font-size: 2vh;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 65vw;
+    height: 40vh;
+    margin-left: 50vh;
+}
+
+.flex-container > .child-holder {
+    margin: 1vw;
+    color: black;
+    box-shadow: 0.5vw 0.25vw 0.25vw black;
+    font-size: 2vh;
+}
+
+.child-holder {
+    border: 1px solid #5577FF;
+    padding: 2vw;
+    margin-top: 1vw;
+    width: 50vw;
+    height: 30vh;
+    border-radius: 4vw;
+}
+
+#deptTheSame {
+    display: inline-block;
+}
+
+.child{
+    width: 50vw;
+    height: 30vh;
+}
+
+a:hover{
+    background-color: gray;
+    color: yellow;
+}

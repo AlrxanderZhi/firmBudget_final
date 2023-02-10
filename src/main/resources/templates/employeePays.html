@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>payment</title>
+    <link href="data:;base64,=" rel="icon">
+    <link href="../css/authorized.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="main-block">
+    <div class="form" id="f2">
+        <h4 id="h4">Employee Pays</h4>
+        <div class="info">
+            <label>id
+                <select id="select2">
+                </select>
+            </label>
+            <label>department
+                <input id="emplDeptName" name="emplDeptName" type="text" readonly>
+            </label>
+            <label>first name
+                <input class="text" id="firstName" name="firstName" type="text" readonly>
+            </label>
+            <label>last name
+                <input class="text" id="lastName" name="lastName" type="text" readonly>
+            </label>
+            <label>one pay limit
+                <input class="number" id="emplOnePayLimit" min="0" name="onePayLimit" type="number" readonly>
+            </label>
+            <label>day limit
+                <input class="number" id="emplDayLimit" min="0" name="dayLimit" type="number" readonly>
+            </label>
+            <label >employee pays
+                <input class="number" id="emplPays" min="0" name="emplPays" type="number">
+            </label>
+        </div>
+        <button id="btn5" type="submit">Pay</button>
+    </div>
+</div>
+
+<script src="../js/employeePays.js" type="module"></script>
+</body>
+</html>

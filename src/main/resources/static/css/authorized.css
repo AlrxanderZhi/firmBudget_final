@@ -1,0 +1,81 @@
+body {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 14px;
+    background-image: url("../pic/1647995459_7-gamerwall-pro-p-fon-puteshestviya-krasivie-9.jpg");
+}
+
+h1 {
+    margin: 0 0 1vh;
+    font-weight: bolder;
+    color: black;
+}
+
+p {
+    margin: 0 0 5px;
+}
+
+.main-block {
+    display: flex;
+    width: 100vw;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    width: 20vh;
+    padding: 1vh;
+    margin-top: 1vh;
+    margin-left: 2vw;
+    box-shadow: 0.5vw 0.25vw 0.25vw black;
+    border-radius: 3vh;
+    border-color: black;
+    background-color: linen;
+}
+
+.fas {
+    margin: 25px 10px 0;
+    font-size: 72px;
+    color: #fff;
+}
+
+input , #select1, #select2{
+    width: calc(100% - 18px);
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #1c87c9;
+    outline: none;
+}
+#select1, #select2{
+    width: 100%;
+    background-color: white;
+}
+
+input::placeholder {
+    color: #666;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 2vh;
+    background: #1c87c9;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+}
+
+button:hover {
+    background: #2371a0;
+}
+
+@media (min-width: 568px) {
+    .main-block {
+        flex-direction: row;
+    }
+}
