@@ -31,7 +31,7 @@ public class WebSecurityConfig {
                         authorize -> authorize
                                 .antMatchers("/css/*", "/js/*").permitAll()
                                 .antMatchers(HttpMethod.GET, "/authorized/**").hasAnyRole("ADMIN", "DIRECTOR", "CHIEF")
-                                .antMatchers(HttpMethod.GET, "/api/v1/dept/**", "/api/v1/employee/**").authenticated()
+                                .antMatchers(HttpMethod.GET, "/api/v1/dept/**").authenticated()
                                 .antMatchers(HttpMethod.DELETE, "/api/v1/dept/5").denyAll()
                                 .antMatchers(HttpMethod.DELETE, "/api/v1/dept/**").hasRole("ADMIN")
                                 .antMatchers(HttpMethod.DELETE, "/api/v1/employee/**").hasRole("ADMIN")

@@ -1,5 +1,6 @@
 package org.home.rest.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -25,6 +26,7 @@ public class Employee {
     String username;
 
     @NonNull
+    @JsonIgnore
     String password;
 
     @NonNull
