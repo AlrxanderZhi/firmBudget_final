@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Department {
+public class Department{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -36,6 +36,9 @@ public class Department {
 
     @NonNull
     LocalDate departDate;
+
+    @Version
+    int version;
 
     @JsonIgnore
     @OneToMany(mappedBy = "department", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})

@@ -1,5 +1,6 @@
 import {baseURI, doc} from './modules/parameters.js';
 import appendNewFlex from './modules/appendNewFlex.js';
+import addScript from './modules/addScript.js';
 
 (async function getData() {
     const responseEmpl = await fetch(`${baseURI}/employee`);
@@ -83,15 +84,5 @@ async function loadDepts() {
 window.addEventListener('load', loadDepts);
 
 //--------------------------------------------------------fulfil scripts one by one
-//Previously this function adn its call was in file dept.js.
-//When nodule appendNextFlex was added mistake "import declarations may only appear at top level of a module" arose.
-//It occurred that when import is done only one line "<script src="../js/dept.js" type="module"></script>" is permissible.
-//So this function was moved here
-function addScript(src) {
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = false; // чтобы гарантировать порядок
-    document.head.appendChild(script);
-}
 
-setTimeout(addScript, 100, "../js/getLoginAndRole.js", 1);
+setTimeout(addScript, 200, "../js/getLoginAndRole.js", 1);

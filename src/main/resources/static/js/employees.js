@@ -1,5 +1,6 @@
 import {baseURI} from './modules/parameters.js';
 import appendNewFlex from './modules/appendNewFlex.js'
+import addScript from './modules/addScript.js';
 
 let employees,
     id = [],
@@ -46,3 +47,5 @@ async function loadEmployees() {
 }
 
 window.addEventListener('load', loadEmployees);
+
+setTimeout(addScript, 200, "../js/getLoginAndRole.js", 1);

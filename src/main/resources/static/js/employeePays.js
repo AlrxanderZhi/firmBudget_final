@@ -1,10 +1,8 @@
 import checkForForbidden from './modules/checkForForbidden.js';
 import check from './modules/check.js';
+import {baseURI, doc, csrfToken} from './modules/parameters.js';
 
 checkForForbidden();
-const baseURI = 'http://localhost:8080/api/v1';
-let doc = document;
-const csrfToken = document.cookie.replace(/(?:(?:^|.*;\s*)XSRF-TOKEN\s*\=\s*([^;]*).*$)|^.*$/, '$1');
 
 //--------------------------------------------------------insert/update data in the employee fields
 const emplIdField = doc.getElementById('emplId');

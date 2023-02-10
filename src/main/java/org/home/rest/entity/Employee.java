@@ -43,4 +43,7 @@ public class Employee {
 
     @ManyToOne
     Department department;
+
+    @Version
+    int version;
 }
