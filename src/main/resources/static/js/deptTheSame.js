@@ -1,4 +1,4 @@
-import {doc} from './modules/parameters.js';
+import {baseURI, doc} from './modules/parameters.js';
 
 let departments,
     employee,
@@ -64,8 +64,8 @@ let description = [
 
 // Loading elements from json
 (async function () {
-    const responseDept = await fetch('http://localhost:8080/api/v1/dept');
-    const responseEmpl = await fetch('http://localhost:8080/api/v1/employee');
+    const responseDept = await fetch(`${baseURI}/dept`);
+    const responseEmpl = await fetch(`${baseURI}/employee`);
 
     departments = await responseDept.json();
     employee = await responseEmpl.json();

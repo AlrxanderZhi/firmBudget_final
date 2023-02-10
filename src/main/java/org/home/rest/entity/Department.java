@@ -18,16 +18,22 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
     @NonNull
     String name;
+
     @NonNull
     Integer balance;
+
     @NonNull
     Integer departDayLimit;
+
     @NonNull
     Integer departOnePayLimit;
+
     @NonNull
     Integer departDateLimit;
+
     @NonNull
     LocalDate departDate;
 

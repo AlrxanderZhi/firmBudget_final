@@ -29,7 +29,7 @@
     </header>
 
     <header id="authorized" style="margin-top: 60vh; ">
-        <a href="/authorized" style="font-size: large">Access to data</a>
+        <a href="/authorized" style="font-size: large">Update data</a>
     </header>
 
     <header id="employeePays" style="margin-top: 60vh; ">
@@ -44,17 +44,5 @@
     </main>
 </div>
 <script src="../js/dept.js" type="module"></script>
-<script>
-    //--------------------------------------------------------fulfil scripts one by one
-    function addScript(src) {
-        const script = document.createElement('script');
-        script.src = src;
-        script.async = false; // чтобы гарантировать порядок
-        document.head.appendChild(script);
-    }
-
-    addScript("../js/dept.js");
-    setTimeout(addScript, 100, "../js/getLoginAndRole.js", 1);
-</script>
 </body>
 </html>

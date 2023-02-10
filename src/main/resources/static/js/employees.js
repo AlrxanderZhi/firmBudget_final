@@ -1,5 +1,7 @@
-let doc = document,
-    employees,
+import {baseURI} from './modules/parameters.js';
+import appendNewFlex from './modules/appendNewFlex.js'
+
+let employees,
     id = [],
     firstName = [],
     lastName = [],
@@ -10,7 +12,7 @@ let doc = document,
     role = [];
 
 async function loadEmployees() {
-    const response = await fetch('http://localhost:8080/api/v1/employee');
+    const response = await fetch(`${baseURI}/employee`);
     employees = await response.json();
 
     for (let i = 0; i < employees.length; i++) {
@@ -22,20 +24,6 @@ async function loadEmployees() {
         deptName[i] = employees[i]['department']['name'];
         personalId[i] = employees[i]['personalId'];
         role[i] = employees[i]['role'];
-    }
-
-    function appendNewFlex(jsonTxt) {
-        let div = doc.createElement("div");
-        div.className = "child-holder";
-
-        let paragraph = doc.createElement("p");
-        paragraph.className = "child";
-
-        let newContent = doc.createTextNode(jsonTxt);
-        paragraph.appendChild(newContent);
-
-        div.appendChild(paragraph);
-        doc.getElementsByClassName("flex-container")[0].appendChild(div);
     }
 
     let departmentName = [];

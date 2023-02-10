@@ -33,16 +33,6 @@ public class HomeController {
         return "authorized";
     }
 
-//    @GetMapping("director")
-//    String director() {
-//        return "director";
-//    }
-//
-//    @GetMapping("deptchief")
-//    String deptChief() {
-//        return "deptchief";
-//    }
-
     @GetMapping("employeePays")
     String employeePays() {
         return "employeePays";

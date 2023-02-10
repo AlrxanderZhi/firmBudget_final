@@ -1,7 +1,5 @@
 import {baseURI, doc} from './modules/parameters.js';
-
-// const baseURI = 'http://localhost:8080/api/v1';
-// document.cookie.replace(/(?:(?:^|.*;\s*)XSRF-TOKEN\s*\=\s*([^;]*).*$)|^.*$/, '$1');
+import appendNewFlex from './modules/appendNewFlex.js';
 
 (async function getData() {
     const responseEmpl = await fetch(`${baseURI}/employee`);
@@ -27,7 +25,7 @@ let departments,
     departDate = [];
 
 async function loadDepts() {
-    const responseDept = await fetch('http://localhost:8080/api/v1/dept');
+    const responseDept = await fetch(`${baseURI}/dept`);
 
     departments = await responseDept.json();
     for (let i = 0; i < departments.length; i++) {
@@ -56,21 +54,6 @@ async function loadDepts() {
         }
     })();
 
-    // Creating flexBoxes of departments
-    function appendNewFlex(jsonTxt) {
-        let div = doc.createElement("div");
-        div.className = "child-holder";
-
-        let paragraph = doc.createElement("p");
-        paragraph.className = "child";
-
-        let newContent = doc.createTextNode(jsonTxt);
-        paragraph.appendChild(newContent);
-
-        div.appendChild(paragraph);
-        doc.getElementsByClassName("flex-container")[0].appendChild(div);
-    }
-
     // Insert data from json into Flexbox
     let departmentName = [];
     for (let i = 0; i < departments.length; i++) {
@@ -98,3 +81,17 @@ async function loadDepts() {
 }
 
 window.addEventListener('load', loadDepts);
+
+//--------------------------------------------------------fulfil scripts one by one
+//Previously this function adn its call was in file dept.js.
+//When nodule appendNextFlex was added mistake "import declarations may only appear at top level of a module" arose.
+//It occurred that when import is done only one line "<script src="../js/dept.js" type="module"></script>" is permissible.
+//So this function was moved here
+function addScript(src) {
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = false; // чтобы гарантировать порядок
+    document.head.appendChild(script);
+}
+
+setTimeout(addScript, 100, "../js/getLoginAndRole.js", 1);
