@@ -1,5 +1,6 @@
-let doc = document,
-    departments,
+import {doc} from './modules/parameters.js';
+
+let departments,
     employee,
     numEmployee = 0,
     deptName = [];

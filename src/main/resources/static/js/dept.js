@@ -1,5 +1,7 @@
-const baseURI = 'http://localhost:8080/api/v1';
-document.cookie.replace(/(?:(?:^|.*;\s*)XSRF-TOKEN\s*\=\s*([^;]*).*$)|^.*$/, '$1');
+import {baseURI, doc} from './modules/parameters.js';
+
+// const baseURI = 'http://localhost:8080/api/v1';
+// document.cookie.replace(/(?:(?:^|.*;\s*)XSRF-TOKEN\s*\=\s*([^;]*).*$)|^.*$/, '$1');
 
 (async function getData() {
     const responseEmpl = await fetch(`${baseURI}/employee`);
@@ -22,8 +24,7 @@ let departments,
     departDayLimit = [],
     departOnePayLimit = [],
     departDateLimit = [],
-    departDate = [],
-    doc = document;
+    departDate = [];
 
 async function loadDepts() {
     const responseDept = await fetch('http://localhost:8080/api/v1/dept');

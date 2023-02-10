@@ -7,6 +7,7 @@ let doc = document;
 const csrfToken = document.cookie.replace(/(?:(?:^|.*;\s*)XSRF-TOKEN\s*\=\s*([^;]*).*$)|^.*$/, '$1');
 
 //--------------------------------------------------------insert/update data in the employee fields
+const emplIdField = doc.getElementById('emplId');
 const emplDeptNameField = doc.getElementById('emplDeptName');
 const emplFirstNameField = doc.getElementById('firstName');
 const emplLastNameField = doc.getElementById('lastName');
@@ -22,7 +23,6 @@ let employees,
 
 (async function insertEmplData() {
     const responseEmpl = await fetch(`${baseURI}/employee`);
-    let select2, opt2, text2;
 
     employees = await responseEmpl.json();
     for (let i = 0; i < employees.length; i++) {
@@ -34,12 +34,8 @@ let employees,
             emplDayLimit = employees[i]['dayLimit'];
         }
     }
-    select2 = doc.getElementById('select2');
-    opt2 = doc.createElement('option');
-    text2 = doc.createTextNode(localStorage.getItem('employeeId'));
-    opt2.appendChild(text2);
-    select2.appendChild(opt2);
 
+    emplIdField.value = localStorage.getItem('employeeId');
     emplFirstNameField.value = emplFirstName;
     emplLastNameField.value = emplLastName;
     emplDeptNameField.value = emplDeptName;
@@ -47,22 +43,9 @@ let employees,
     emplDayLimitField.value = emplDayLimit;
 })();
 
-function updateEmplFields() {
-    let id = doc.getElementById('select2').value;
-
-    emplFirstNameField.value = emplFirstName[id];
-    emplLastNameField.value = emplLastName[id];
-    emplDeptNameField.value = emplDeptName[id];
-    emplOnePayLimitField.value = emplOnePayLimit[id];
-    emplDayLimitField.value = emplDayLimit[id];
-}
-
-const select2Field = doc.getElementById('select2');
-select2Field.addEventListener('change', updateEmplFields);
-
 //---------------------------------------------------------employee pays
 async function employeePays() {
-    let employeeId = doc.getElementById('select2').value;
+    let employeeId = doc.getElementById('emplId').value;
 
     const requestDpt = await fetch(`${baseURI}/employee/${employeeId}`);
     employees = await requestDpt.json();
