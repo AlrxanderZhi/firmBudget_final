@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -39,7 +40,13 @@ public class Employee {
     Integer dayLimit;
 
     @NonNull
+    Integer balance;
+
+    @NonNull
     String role;
+
+    @NonNull
+    LocalDate date;
 
     @ManyToOne
     Department department;

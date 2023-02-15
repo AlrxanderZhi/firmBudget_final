@@ -1,6 +1,6 @@
 import checkForForbidden from './modules/checkForForbidden.js';
 import check from './modules/check.js';
-import {baseURI, doc, csrfToken} from './modules/parameters.js';
+import {baseURI, csrfToken, doc} from './modules/parameters.js';
 
 checkForForbidden();
 
@@ -108,6 +108,8 @@ const emplFirstNameField = doc.getElementById('firstName');
 const emplLastNameField = doc.getElementById('lastName');
 const emplOnePayLimitField = doc.getElementById('emplOnePayLimit');
 const emplDayLimitField = doc.getElementById('emplDayLimit');
+let currBalance;
+let currDate;
 
 let employees,
     emplId = [],
@@ -116,7 +118,9 @@ let employees,
     emplDeptName = [],
     emplonePayLimit = [],
     empldayLimit = [],
-    emplPersonId = [];
+    emplPersonId = [],
+    emplBalance = [],
+    emplDate = [];
 
 (async function insertEmplData() {
     const responseEmpl = await fetch(`${baseURI}/employee`);
@@ -131,6 +135,8 @@ let employees,
         emplonePayLimit[i] = employees[i]['onePayLimit'];
         empldayLimit[i] = employees[i]['dayLimit'];
         emplPersonId[i] = employees[i]['personalId'];
+        emplBalance[i] = employees[i]['balance'];
+        emplDate[i] = employees[i]['date'];
     }
     if (localStorage.getItem('role') === 'ROLE_ADMIN' ||
         localStorage.getItem('role') === 'ROLE_DIRECTOR') {
@@ -180,6 +186,8 @@ function updateEmplFields() {
     emplDeptNameField.value = emplDeptName[idx];
     emplOnePayLimitField.value = emplonePayLimit[idx];
     emplDayLimitField.value = empldayLimit[idx];
+    currBalance = emplBalance[idx];
+    currDate = emplDate[idx];
 }
 
 const select2Field = doc.getElementById('select2');
@@ -220,6 +228,8 @@ async function changeEmployeeData() {
         lastName: emplLastNameField.value,
         onePayLimit: emplOnePayLimitField.value,
         dayLimit: emplDayLimitField.value,
+        balance: currBalance,
+        date: currDate,
         // personalId: select2Field.options[select2Field.selectedIndex].text,  in service we have only 4 parameters
     };
 

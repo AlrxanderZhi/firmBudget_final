@@ -38,6 +38,8 @@ public class EmployeeService {
             person.setLastName(employee.getLastName());
             person.setDayLimit(employee.getDayLimit());
             person.setOnePayLimit(employee.getOnePayLimit());
+            person.setBalance(employee.getBalance());
+            person.setDate(employee.getDate());
             return ResponseEntity.of(Optional.of(employeeRepo.save(person)));
         }
         return ResponseEntity.notFound().build();

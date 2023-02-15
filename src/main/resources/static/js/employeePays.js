@@ -1,6 +1,6 @@
 import checkForForbidden from './modules/checkForForbidden.js';
 import check from './modules/check.js';
-import {baseURI, doc, csrfToken} from './modules/parameters.js';
+import {baseURI, csrfToken, doc} from './modules/parameters.js';
 
 checkForForbidden();
 
@@ -11,13 +11,18 @@ const emplFirstNameField = doc.getElementById('firstName');
 const emplLastNameField = doc.getElementById('lastName');
 const emplOnePayLimitField = doc.getElementById('emplOnePayLimit');
 const emplDayLimitField = doc.getElementById('emplDayLimit');
+const emplBalanceField = doc.getElementById('emplBalance');
+
 
 let employees,
     emplFirstName,
     emplLastName,
     emplDeptName,
     emplOnePayLimit,
-    emplDayLimit;
+    emplDayLimit,
+    balance,
+    date,
+    currDate;
 
 (async function insertEmplData() {
     const responseEmpl = await fetch(`${baseURI}/employee`);
@@ -30,7 +35,14 @@ let employees,
             emplDeptName = employees[i]['department']['name'];
             emplOnePayLimit = employees[i]['onePayLimit'];
             emplDayLimit = employees[i]['dayLimit'];
+            balance = employees[i]['balance'];
+            date = employees[i]['date'];
         }
+    }
+
+    currDate = new Date().getUTCDate();
+    if (currDate != date.substring(8, 10)) {
+        balance = emplDayLimit
     }
 
     emplIdField.value = localStorage.getItem('employeeId');
@@ -39,6 +51,7 @@ let employees,
     emplDeptNameField.value = emplDeptName;
     emplOnePayLimitField.value = emplOnePayLimit;
     emplDayLimitField.value = emplDayLimit;
+    emplBalanceField.value = balance;
 })();
 
 //---------------------------------------------------------employee pays
@@ -53,6 +66,7 @@ async function employeePays() {
     let emplLastName = employees['lastName'];
     let emplOnePayLimit = employees['onePayLimit'];
     let emplDayLimit = employees['dayLimit'];
+    let balance = employees['balance'];
 
     let deptId = employees['department']['id'];
     let deptName = employees['department']['name'];
@@ -71,12 +85,14 @@ async function employeePays() {
 
     let emplPays = doc.getElementById('emplPays').value;
 
-
     if (compareValues(emplPays, emplOnePayLimit, 'exceeding your one pay limit!!!') === false) {
         return;
     }
 
     if (compareValues(emplPays, emplDayLimit, 'exceeding your day limit!!!') === false) {
+        return;
+    }
+    if (compareValues(emplPays, balance, 'exceeding your balance!!!') === false) {
         return;
     }
 
@@ -118,13 +134,15 @@ async function employeePays() {
         body: JSON.stringify(deptNewData)
     });
 
-    emplDayLimit = emplDayLimit - emplPays;
+    let currBalance = balance-emplPays;
     const emplNewData = {
         firstName: emplFirstName,
         lastName: emplLastName,
         onePayLimit: emplOnePayLimit,
         dayLimit: emplDayLimit,
-        personalId: employeeId
+        personalId: employeeId,
+        balance: currBalance,
+        date: new Date(),
     };
 
     let responseEmpl = await fetch(`${baseURI}/employee/${emplId}`, {
