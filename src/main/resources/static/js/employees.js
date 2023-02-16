@@ -10,7 +10,8 @@ let employees,
     dayLimit = [],
     personalId = [],
     deptName = [],
-    role = [];
+    role = [],
+    balance = [];
 
 async function loadEmployees() {
     const response = await fetch(`${baseURI}/employee`);
@@ -25,6 +26,7 @@ async function loadEmployees() {
         deptName[i] = employees[i]['department']['name'];
         personalId[i] = employees[i]['personalId'];
         role[i] = employees[i]['role'];
+        balance[i] = employees[i]['balance'];
     }
 
     let departmentName = [];
@@ -40,8 +42,8 @@ async function loadEmployees() {
             + `\n`
             + `Limit for one payment` + space + onePayLimit[i] + '\n'
             + `Limit for one day` + space + dayLimit[i] + '\n'
+            + `Balance` + space + balance[i] + '\n'
             + "ID " + id[i];
-
     }
     departmentName.forEach(appendNewFlex);
 }

@@ -13,19 +13,21 @@ const emplOnePayLimitField = doc.getElementById('emplOnePayLimit');
 const emplDayLimitField = doc.getElementById('emplDayLimit');
 const emplBalanceField = doc.getElementById('emplBalance');
 
-
 let employees,
     emplFirstName,
     emplLastName,
     emplDeptName,
     emplOnePayLimit,
     emplDayLimit,
-    balance,
+    emplBalance,
     date,
     currDate;
 
 (async function insertEmplData() {
     const responseEmpl = await fetch(`${baseURI}/employee`);
+
+    currDate = new Date().toISOString().substring(8, 10);
+    console.log(currDate);
 
     employees = await responseEmpl.json();
     for (let i = 0; i < employees.length; i++) {
@@ -35,14 +37,13 @@ let employees,
             emplDeptName = employees[i]['department']['name'];
             emplOnePayLimit = employees[i]['onePayLimit'];
             emplDayLimit = employees[i]['dayLimit'];
-            balance = employees[i]['balance'];
             date = employees[i]['date'];
+            if (currDate !== date.substring(8, 10)) {
+                emplBalance = emplDayLimit
+            } else {
+                emplBalance = employees[i]['balance'];
+            }
         }
-    }
-
-    currDate = new Date().getUTCDate();
-    if (currDate != date.substring(8, 10)) {
-        balance = emplDayLimit
     }
 
     emplIdField.value = localStorage.getItem('employeeId');
@@ -51,7 +52,7 @@ let employees,
     emplDeptNameField.value = emplDeptName;
     emplOnePayLimitField.value = emplOnePayLimit;
     emplDayLimitField.value = emplDayLimit;
-    emplBalanceField.value = balance;
+    emplBalanceField.value = emplBalance;
 })();
 
 //---------------------------------------------------------employee pays
@@ -66,7 +67,7 @@ async function employeePays() {
     let emplLastName = employees['lastName'];
     let emplOnePayLimit = employees['onePayLimit'];
     let emplDayLimit = employees['dayLimit'];
-    let balance = employees['balance'];
+    let balance = emplBalance;
 
     let deptId = employees['department']['id'];
     let deptName = employees['department']['name'];
@@ -114,8 +115,13 @@ async function employeePays() {
         return;
     }
 
-    deptBalance = deptBalance - emplPays;
-    deptDayLimit = deptDayLimit - emplPays;
+
+    if (currDate !== date.substring(8, 10)) {
+        deptBalance = deptDayLimit
+    } else {
+        deptBalance = deptBalance - emplPays;
+    }
+
     const deptNewData = {
         name: deptName,
         balance: deptBalance,
@@ -134,7 +140,7 @@ async function employeePays() {
         body: JSON.stringify(deptNewData)
     });
 
-    let currBalance = balance-emplPays;
+    let currBalance = balance - emplPays;
     const emplNewData = {
         firstName: emplFirstName,
         lastName: emplLastName,
@@ -142,7 +148,7 @@ async function employeePays() {
         dayLimit: emplDayLimit,
         personalId: employeeId,
         balance: currBalance,
-        date: new Date(),
+        date: new Date().toISOString(),
     };
 
     let responseEmpl = await fetch(`${baseURI}/employee/${emplId}`, {
